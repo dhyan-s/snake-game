@@ -12,7 +12,7 @@ FPS = 30
 display = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
 clock = pygame.time.Clock()
 
-snake = Snake(display, 15, 15)
+snake = Snake(display, 15, 15, outline_width=2)
 
 pygame.display.set_caption("Snake game by Dhyanesh!")
 
@@ -26,13 +26,16 @@ while True:
             
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                snake.direction = snake.up
+                snake.up()
             elif event.key == pygame.K_DOWN:
-                snake.direction = snake.down
+                snake.down()
             elif event.key == pygame.K_LEFT:
-                snake.direction = snake.left
+                snake.left()
             elif event.key == pygame.K_RIGHT:
-                snake.direction = snake.right
+                snake.right()
+            elif event.key == pygame.K_SPACE:
+                print("extending")
+                snake.extend()
             
     snake.render()
             
