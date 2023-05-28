@@ -2,6 +2,10 @@ import pygame
 from typing import Tuple, Union
 
 class SnakePiece:
+    """
+    Represents a piece of the snake in the snake game.
+    """
+    
     def __init__(
         self,
         display: pygame.Surface,
