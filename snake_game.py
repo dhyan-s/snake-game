@@ -34,7 +34,6 @@ while True:
             elif event.key == pygame.K_RIGHT:
                 snake.right()
             elif event.key == pygame.K_SPACE:
-                print("extending")
                 snake.extend()
             
     snake.render()

@@ -115,19 +115,10 @@ class SnakeHead(SnakePiece):
         Parameters:
             - direction: The current direction of the head.
         """
-        if direction == 'u':
-            x_vel = 0
-            y_vel = -self.velocity
-        elif direction == 'd':
-            x_vel = 0
-            y_vel = self.velocity
-        elif direction == 'l':
-            x_vel = -self.velocity
-            y_vel = 0
-        elif direction == 'r':
-            x_vel = self.velocity
-            y_vel = 0
-        return x_vel, y_vel
+        if direction == 'u': return (0, -self.velocity)
+        elif direction == 'd': return (0, self.velocity)
+        elif direction == 'l': return (-self.velocity, 0)
+        elif direction == 'r': return (self.velocity, 0)
 
     def draw_eye(self) -> None:
         """Draw the eyes inside the head."""
