@@ -2,6 +2,7 @@ import pygame
 import sys
 
 from sprites.snake import Snake
+from sprites.fruit import Fruit
 
 pygame.init()
 
@@ -13,6 +14,7 @@ display = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
 clock = pygame.time.Clock()
 
 snake = Snake(display, 15, 15, outline_width=2)
+fruit = Fruit(display, 0, 0)
 
 pygame.display.set_caption("Snake game by Dhyanesh!")
 
@@ -35,8 +37,10 @@ while True:
                 snake.right()
             elif event.key == pygame.K_SPACE:
                 snake.extend()
+                fruit.set_random_pos()
             
     snake.render()
+    fruit.render()
             
     pygame.display.update()
     clock.tick(FPS)
