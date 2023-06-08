@@ -40,6 +40,15 @@ class Game:
             font = self.game_font
             )
         
+    def point(self) -> None:
+        if self.snake.head.is_colliding(self.fruit.rect):
+            self.snake.extend()
+            self.fruit.set_random_pos(
+                x_range=(self.boundary_lines.line_left.right, self.boundary_lines.line_right.left),
+                y_range=(self.boundary_lines.line_top.bottom, self.boundary_lines.stats_separator.top)
+            )
+            self.scoreboard.increment_score()
+        
     def handle_event(self, event: pygame.event.Event):
         if event.type != pygame.KEYDOWN:
             return
@@ -51,13 +60,6 @@ class Game:
             self.snake.left()
         elif event.key == pygame.K_RIGHT:
             self.snake.right()
-        elif event.key == pygame.K_SPACE:
-            self.snake.extend()
-            self.fruit.set_random_pos(
-                x_range=(self.boundary_lines.line_left.right, self.boundary_lines.line_right.left),
-                y_range=(self.boundary_lines.line_top.bottom, self.boundary_lines.stats_separator.top)
-            )
-            self.scoreboard.increment_score()
         
     def render_boundary(self) -> BoundaryLines:
         display_width = self.display.get_width()
@@ -78,9 +80,10 @@ class Game:
 
     
     def render(self) -> None:
+        self.boundary_lines = self.render_boundary()
+        self.point()
         self.snake.render()
         self.fruit.render()
-        self.boundary_lines = self.render_boundary()
         self.scoreboard.render(
             score_coords = center_of(
                 (self.boundary_lines.score_separator.right, self.boundary_lines.line_right.left),

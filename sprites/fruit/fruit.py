@@ -27,6 +27,8 @@ class Fruit:
         self.color = color
         self.outline_color = outline_color
         
+        self.update_rect()
+        
     def set_pos_to(self, coords: Tuple) -> None:
         """Sets the position of the fruit to the specified coordinates."""
         self.x, self.y = coords
@@ -44,8 +46,12 @@ class Fruit:
         self.x = random.randint(*x_range)
         self.y = random.randint(*y_range)
         
+    def update_rect(self) -> None:
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
+        
     def render(self) -> None:
         """Draws the fruit on the display surface."""
-        apple = pygame.draw.ellipse(self.display, self.color, [self.x, self.y, self.width, self.height])
-        apple_outline = pygame.draw.ellipse(self.display, self.outline_color, [self.x, self.y, self.width, self.height], width=self.outline_width)
+        self.update_rect()
+        apple = pygame.draw.ellipse(self.display, self.color, self.rect)
+        apple_outline = pygame.draw.ellipse(self.display, self.outline_color, self.rect, width=self.outline_width)
         
