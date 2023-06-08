@@ -53,7 +53,10 @@ class Game:
             self.snake.right()
         elif event.key == pygame.K_SPACE:
             self.snake.extend()
-            self.fruit.set_random_pos()
+            self.fruit.set_random_pos(
+                x_range=(self.boundary_lines.line_left.right, self.boundary_lines.line_right.left),
+                y_range=(self.boundary_lines.line_top.bottom, self.boundary_lines.stats_separator.top)
+            )
             self.scoreboard.increment_score()
         
     def render_boundary(self) -> BoundaryLines:
