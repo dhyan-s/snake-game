@@ -77,15 +77,15 @@ class Game:
     def render(self) -> None:
         self.snake.render()
         self.fruit.render()
-        boundary_lines = self.render_boundary()
+        self.boundary_lines = self.render_boundary()
         self.scoreboard.render(
             score_coords = center_of(
-                (boundary_lines.score_separator.right, boundary_lines.line_right.left),
-                (boundary_lines.stats_separator.bottom, boundary_lines.line_bottom.top)
+                (self.boundary_lines.score_separator.right, self.boundary_lines.line_right.left),
+                (self.boundary_lines.stats_separator.bottom, self.boundary_lines.line_bottom.top)
             ),
             highscore_coords = center_of(
-                (boundary_lines.line_left.right, boundary_lines.highscore_separator.left),
-                (boundary_lines.stats_separator.bottom, boundary_lines.line_bottom.top)
+                (self.boundary_lines.line_left.right, self.boundary_lines.highscore_separator.left),
+                (self.boundary_lines.stats_separator.bottom, self.boundary_lines.line_bottom.top)
             )
         )
         
