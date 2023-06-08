@@ -41,7 +41,7 @@ class Game:
             )
         
     def point(self) -> None:
-        if self.snake.head.is_colliding(self.fruit.rect):
+        if self.snake.head.colliding_with(self.fruit.rect):
             self.snake.extend()
             self.fruit.set_random_pos(
                 x_range=(self.boundary_lines.line_left.right, self.boundary_lines.line_right.left),
