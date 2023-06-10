@@ -64,6 +64,14 @@ class SnakeHead(SnakePiece):
             outline_width=outline_width,
             initial_direction=initial_direction
         )
+        
+        self._moving = False
+        
+    def start(self) -> None:
+        self._moving = True
+        
+    def stop(self) -> None:
+        self._moving = False
 
     def up(self) -> None:
         """Change the direction of the head to up."""
@@ -128,6 +136,7 @@ class SnakeHead(SnakePiece):
 
     def move(self) -> None:
         """Move the head according to the current direction."""
+        if not self._moving: return
         x_vel, y_vel = self._get_velocity(self._direction)
         self.rect.x += x_vel
         self.rect.y += y_vel

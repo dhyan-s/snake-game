@@ -96,6 +96,14 @@ class Snake:
             extend_by=extend_by
         )
         
+    def start(self) -> None:
+        self.head.start()
+        self.body.start()
+        
+    def stop(self) -> None:
+        self.head.stop()
+        self.body.stop()
+        
     def up(self) -> None:
         """Makes the snake travel upwards."""
         self.head.up()

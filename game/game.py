@@ -27,6 +27,8 @@ class Game:
         self.snake = Snake(display, 15, 15, outline_width=2)
         self.fruit = Fruit(display, 20, 20)
         
+        self.snake.start()
+        
         self.boundary_color: Union[str, Tuple[int, int, int]] = "red"
         self.boundary_thickness: int = 6
         

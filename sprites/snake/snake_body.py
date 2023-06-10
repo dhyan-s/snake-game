@@ -47,6 +47,14 @@ class SnakeBody:
         self.pieces: List[SnakePiece] = []
         self.no_pieces = 0
         
+        self._moving = False
+        
+    def start(self) -> None:
+        self._moving = True
+        
+    def stop(self) -> None:
+        self._moving = False
+        
     def colliding_with(self, other_rect: pygame.Rect) -> None:
         return any(piece.colliding_with(other_rect) for piece in self.pieces)
         
@@ -106,7 +114,7 @@ class SnakeBody:
 
     def move(self) -> None:
         """Handles movement of the snake body."""
-        if not self.pieces: return
+        if not (self.pieces and self._moving): return
         reversed_pieces = list(reversed(self.pieces))
         for idx, piece in enumerate(reversed_pieces[:-1]):
             piece.direction = reversed_pieces[idx+1].direction
