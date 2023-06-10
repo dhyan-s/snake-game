@@ -38,6 +38,9 @@ class SnakePiece:
         self._swapped_dimensions = True
         self.rect = pygame.Rect(x, y, width, height)
         self.direction = initial_direction
+        
+    def colliding_with(self, other_rect: pygame.Rect) -> bool:
+        return self.rect.colliderect(other_rect)
 
     @property
     def direction(self) -> str:

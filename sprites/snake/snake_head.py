@@ -64,9 +64,6 @@ class SnakeHead(SnakePiece):
             outline_width=outline_width,
             initial_direction=initial_direction
         )
-        
-    def colliding_with(self, other_rect: pygame.Rect) -> bool:
-        return self.rect.colliderect(other_rect)
 
     def up(self) -> None:
         """Change the direction of the head to up."""
