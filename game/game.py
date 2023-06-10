@@ -84,6 +84,7 @@ class Game:
         self.point()
         self.snake.render()
         self.fruit.render()
+        print(self.snake.body.colliding_with(self.snake.head.rect))
         self.scoreboard.render(
             score_coords = center_of(
                 (self.boundary_lines.score_separator.right, self.boundary_lines.line_right.left),

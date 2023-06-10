@@ -47,6 +47,9 @@ class SnakeBody:
         self.pieces: List[SnakePiece] = []
         self.no_pieces = 0
         
+    def colliding_with(self, other_rect: pygame.Rect) -> None:
+        return any(piece.colliding_with(other_rect) for piece in self.pieces)
+        
     @property
     def direction(self) -> str:
         """Gets the direction of the snake body."""
