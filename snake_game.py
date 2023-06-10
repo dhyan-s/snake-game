@@ -25,7 +25,6 @@ while True:
             sys.exit()
         else:
             game.handle_event(event)
-        
             
     game.render()
             
