@@ -71,13 +71,13 @@ class Game:
         score_separator_x = display_width - highscore_separator_x
         
         return BoundaryLines(
-            line_top = pygame.draw.rect(self.display, self.boundary_color, [0, 0, display_width, self.boundary_thickness+1]),
-            line_left = pygame.draw.rect(self.display, self.boundary_color, [0,0, self.boundary_thickness, display_height]),
-            line_right = pygame.draw.rect(self.display, self.boundary_color, [display_width-self.boundary_thickness, 0, self.boundary_thickness, display_height]),
-            line_bottom = pygame.draw.rect(self.display, self.boundary_color, [0, display_height-self.boundary_thickness, display_width, self.boundary_thickness]),
-            stats_separator = pygame.draw.rect(self.display, self.boundary_color, [0, display_height-65, display_width, self.boundary_thickness]),
-            score_separator = pygame.draw.rect(self.display, self.boundary_color, [score_separator_x, display_height-65, self.boundary_thickness, 65]),
-            highscore_separator = pygame.draw.rect(self.display, self.boundary_color, [highscore_separator_x, display_height-65, self.boundary_thickness, 65])
+            line_top = pygame.draw.rect(self.display, self.boundary_color, [0, 0, display_width, self.boundary_thickness + 1]),
+            line_left = pygame.draw.rect(self.display, self.boundary_color, [0, 0, self.boundary_thickness, display_height]),
+            line_right = pygame.draw.rect(self.display, self.boundary_color, [display_width - self.boundary_thickness, 0, self.boundary_thickness, display_height]),
+            line_bottom = pygame.draw.rect(self.display, self.boundary_color, [0, display_height - self.boundary_thickness, display_width, self.boundary_thickness]),
+            stats_separator = pygame.draw.rect(self.display, self.boundary_color, [0, display_height - 65, display_width, self.boundary_thickness]),
+            score_separator = pygame.draw.rect(self.display, self.boundary_color, [score_separator_x, display_height - 65, self.boundary_thickness, 65]),
+            highscore_separator = pygame.draw.rect(self.display, self.boundary_color, [highscore_separator_x, display_height - 65, self.boundary_thickness, 65])
         )
 
     
