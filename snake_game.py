@@ -16,6 +16,9 @@ game = Game(display)
 
 pygame.display.set_caption("Snake game by Dhyanesh!")
 
+icon = pygame.image.load("assets/icon.png").convert_alpha()
+pygame.display.set_icon(icon)
+
 while True:
     display.fill((0, 0, 0))
     
