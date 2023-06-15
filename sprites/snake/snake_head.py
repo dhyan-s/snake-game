@@ -64,7 +64,6 @@ class SnakeHead(SnakePiece):
             outline_width=outline_width,
             initial_direction=initial_direction
         )
-        
         self._moving = False
         
     def start(self) -> None:
@@ -75,18 +74,22 @@ class SnakeHead(SnakePiece):
 
     def up(self) -> None:
         """Change the direction of the head to up."""
+        if not self._moving: return
         self.direction = 'u'
 
     def down(self) -> None:
         """Change the direction of the head to down."""
+        if not self._moving: return
         self.direction = 'd'
 
     def left(self) -> None:
         """Change the direction of the head to left."""
+        if not self._moving: return
         self.direction = 'l'
 
     def right(self) -> None:
         """Change the direction of the head to right."""
+        if not self._moving: return
         self.direction = 'r'
 
     def _get_eye_coordinates(self, rect: pygame.Rect, direction: str) -> Tuple[Union[int, float], Union[int, float], Union[int, float], Union[int, float]]:
