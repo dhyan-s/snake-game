@@ -106,6 +106,10 @@ class Snake:
         self.head.stop()
         self.body.stop()
         
+    def reset(self) -> None:
+        self.body.reset()
+        self.head.reset()
+        
     def up(self) -> None:
         """Makes the snake travel upwards."""
         self.head.up()

@@ -5,24 +5,32 @@ from typing import Tuple, Union
 from sprites.snake import Snake
 from sprites.fruit import Fruit
 from .score import Score
-from .utils import center_of_rect, center_of
 from .boundary import Boundary
+from .gameover import GameOver
+from .utils import center_of_rect
 
 
 class Game:
     def __init__(self, display: pygame.Surface) -> None:
         self.display = display
-        self.game_over = False
 
-        self.load_game_objects()
         self.load_fonts()
+        self.load_game_objects()
         self.load_scoreboard()
         
     def load_game_objects(self) -> None:
         self.snake = Snake(self.display, 15, 15, outline_width=2)
         self.fruit = Fruit(self.display, 20, 20)
         self.boundary = Boundary(self.display)
-        
+        self.gameover_handler = GameOver(
+            display = self.display, 
+            snake = self.snake, 
+            boundary = self.boundary, 
+            gameover_font = self.gameover_font, 
+            message_font = self.message_font,
+            gameover_callback = self.snake.stop,
+            restart_callback = self.restart_game,
+        )
         self.change_fruit_pos()
         self.snake.start()
         
@@ -57,45 +65,11 @@ class Game:
             y_range=(self.boundary.top_line.bottom, self.boundary.stats_separator.top)
         )
         
-    def check_game_over(self) -> Tuple[bool, str]:
-        if self.snake.body.colliding_with(self.snake.head.rect):
-            return (True, "SNAKE BUMPED INTO ITSELF")
-        elif any(self.snake.colliding_with(rect) for rect in [self.boundary.top_line, 
-                                                              self.boundary.bottom_line, 
-                                                              self.boundary.left_line, 
-                                                              self.boundary.right_line, 
-                                                              self.boundary.stats_separator]):
-            return (True, "SNAKE MOVED OUT OF THE BOUNDARY")
-        return (False, "")
-        
-    def handle_game_over(self) -> None:
-        if not self.game_over:
-            self.game_over, self.reason = self.check_game_over()
-        
-    def render_gameover_text(self) -> None:
-        game_over_text = self.gameover_font.render("GAMEOVER!" , True , "white")
-        reason_text = self.message_font.render(f"REASON: {self.reason}" , False , "white") 
-        restart_text = self.message_font.render("PRESS ENTER OR SPACEBAR TO CONTINUE" , False , "white")  
-        
-        y_spacing = 20
-        x_range = (self.boundary.left_line.right, self.boundary.right_line.left)
-        
-        game_over_rect = game_over_text.get_rect(midbottom=center_of_rect(
-            x_range,
-            (self.boundary.top_line.bottom, self.boundary.stats_separator.top)
-        ))
-        
-        reason_rect = reason_text.get_rect(midtop=(
-            center_of(x_range), game_over_rect.bottom + y_spacing
-        ))
-        
-        restart_rect = restart_text.get_rect(midtop=(
-            center_of(x_range), reason_rect.bottom + y_spacing
-        ))
-        
-        self.display.blit(game_over_text, game_over_rect)
-        self.display.blit(reason_text, reason_rect)
-        self.display.blit(restart_text, restart_rect)
+    def restart_game(self) -> None:
+        self.scoreboard.reset_score()
+        self.snake.reset()
+        self.change_fruit_pos()
+        self.snake.start()
         
     def handle_event(self, event: pygame.event.Event):
         if event.type != pygame.KEYDOWN:
@@ -108,12 +82,19 @@ class Game:
             self.snake.left()
         elif event.key == pygame.K_RIGHT:
             self.snake.right()
+        elif event.key in [pygame.K_SPACE, pygame.K_RETURN]:
+            self.gameover_handler.reset()
+            
+    def render_title(self) -> None:
+        title_text = self.game_font.render("SNAKE GAME BY DHYANESH !!" , True , "white")
+        title_rect = title_text.get_rect(center=center_of_rect(
+            (self.boundary.highscore_separator.right, self.boundary.score_separator.left),
+            (self.boundary.stats_separator.bottom, self.boundary.bottom_line.top+2)
+        ))
+        self.display.blit(title_text, title_rect)
     
     def render(self) -> None:
-        self.handle_game_over()
-        if self.game_over:
-            self.snake.stop()
-            self.render_gameover_text()
+        self.gameover_handler.handle_game_over()
         self.point()
         self.snake.render()
         self.fruit.render()
@@ -128,3 +109,6 @@ class Game:
             )
         )
         self.boundary.render()
+        self.render_title()
+        self.gameover_handler.render_gameover_text()
+        

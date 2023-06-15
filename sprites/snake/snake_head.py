@@ -65,12 +65,19 @@ class SnakeHead(SnakePiece):
             initial_direction=initial_direction
         )
         self._moving = False
+        self.__initial_direction = initial_direction
+        self.__start_x = x
+        self.__start_y = y
         
     def start(self) -> None:
         self._moving = True
         
     def stop(self) -> None:
         self._moving = False
+        
+    def reset(self) -> None:
+        self.direction = self.__initial_direction
+        self.rect.topleft = (self.__start_x, self.__start_y)
         
     @property
     def moving(self) -> bool:

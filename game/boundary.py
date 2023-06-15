@@ -4,7 +4,7 @@ class Boundary:
     def __init__(self, 
                  display: pygame.Surface,
                  color: str = "red",
-                 thickness: int = 6,
+                 thickness: int = 8,
                  stats_sep_y_offset = 65,
                  ) -> None:
         self.display = display

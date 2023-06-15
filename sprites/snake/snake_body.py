@@ -53,6 +53,10 @@ class SnakeBody:
     def stop(self) -> None:
         self._moving = False
         
+    def reset(self) -> None:
+        self.pieces.clear()
+        self.no_pieces = 0
+        
     @property
     def moving(self) -> bool:
         return self._moving
