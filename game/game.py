@@ -17,7 +17,9 @@ class Game:
         self.fruit = Fruit(display, 20, 20)
         self.boundary = Boundary(display)
         
+        self.change_fruit_pos()
         self.snake.start()
+        
         self.game_font = pygame.font.Font("assets/fonts/score_font.ttf", 40)
         
         cur_dir = os.path.dirname(__file__)
@@ -31,11 +33,14 @@ class Game:
     def point(self) -> None:
         if self.snake.head.colliding_with(self.fruit.rect):
             self.snake.extend()
-            self.fruit.set_random_pos(
-                x_range=(self.boundary.left_line.right, self.boundary.right_line.left),
-                y_range=(self.boundary.top_line.bottom, self.boundary.stats_separator.top)
-            )
+            self.change_fruit_pos()
             self.scoreboard.increment_score()
+            
+    def change_fruit_pos(self) -> None:
+        self.fruit.set_random_pos(
+            x_range=(self.boundary.left_line.right, self.boundary.right_line.left),
+            y_range=(self.boundary.top_line.bottom, self.boundary.stats_separator.top)
+        )
         
     def handle_event(self, event: pygame.event.Event):
         if event.type != pygame.KEYDOWN:
@@ -53,7 +58,6 @@ class Game:
         self.point()
         self.snake.render()
         self.fruit.render()
-        print(self.snake.body.colliding_with(self.snake.head.rect))
         self.scoreboard.render(
             score_coords = center_of(
                 (self.boundary.score_separator.right, self.boundary.right_line.left),

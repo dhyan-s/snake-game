@@ -45,6 +45,7 @@ class Fruit:
         
         self.x = random.randint(*x_range)
         self.y = random.randint(*y_range)
+        self.update_rect()
         
     def update_rect(self) -> None:
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
