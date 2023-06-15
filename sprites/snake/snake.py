@@ -136,7 +136,8 @@ class Snake:
         self.head.move()
         self.body.render()
         
+        head_moving = self.head.moving
         self.head.stop()
         self.head.render()
-        self.head.start()
+        if head_moving: self.head.start()
         

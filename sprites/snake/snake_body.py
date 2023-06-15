@@ -53,6 +53,10 @@ class SnakeBody:
     def stop(self) -> None:
         self._moving = False
         
+    @property
+    def moving(self) -> bool:
+        return self._moving
+        
     def colliding_with(self, other_rect: pygame.Rect) -> bool:
         return any(piece.colliding_with(other_rect) for piece in self.pieces)
     

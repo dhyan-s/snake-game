@@ -71,6 +71,10 @@ class SnakeHead(SnakePiece):
         
     def stop(self) -> None:
         self._moving = False
+        
+    @property
+    def moving(self) -> bool:
+        return self._moving
 
     def up(self) -> None:
         """Change the direction of the head to up."""
