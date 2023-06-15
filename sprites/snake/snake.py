@@ -92,7 +92,6 @@ class Snake:
             color=body_color,
             outline_color=outline_color,
             outline_width=outline_width,
-            initial_direction=initial_direction,
             extend_by=extend_by
         )
         
@@ -110,22 +109,18 @@ class Snake:
     def up(self) -> None:
         """Makes the snake travel upwards."""
         self.head.up()
-        self.body.up()
         
     def down(self) -> None:
         """Makes the snake travel downwards."""
         self.head.down()
-        self.body.down()
         
     def left(self) -> None:
         """Makes the snake travel towards the left."""
         self.head.left()
-        self.body.left()
         
     def right(self) -> None:
         """Makes the snake travel towards the right."""
         self.head.right()
-        self.body.right()
         
     def extend(self) -> None:
         """Extends the snake's body by adding more pieces."""

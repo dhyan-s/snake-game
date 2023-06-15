@@ -17,7 +17,6 @@ class SnakeBody:
                  color: str = "green",
                  outline_color: str = "white",
                  outline_width: str = 3,
-                 initial_direction: str = "r",
                  extend_by: int = 3) -> None:
         """
         Parameters:
@@ -40,8 +39,7 @@ class SnakeBody:
         
         self.color = color
         self.outline_color = outline_color
-        
-        self.direction = initial_direction
+
         self.extend_by = extend_by
         
         self.pieces: List[SnakePiece] = []
@@ -57,40 +55,6 @@ class SnakeBody:
         
     def colliding_with(self, other_rect: pygame.Rect) -> bool:
         return any(piece.colliding_with(other_rect) for piece in self.pieces)
-        
-    @property
-    def direction(self) -> str:
-        """Gets the direction of the snake body."""
-        return self._direction
-    
-    @direction.setter
-    def direction(self, val: str) -> None:
-        """
-        Sets the direction of the snake body.
-
-        Raises:
-            ValueError: If the direction value is invalid.
-        """
-        if val in {"r", "l", "u", "d"}:
-            self._direction = val
-        else:
-            raise ValueError(f"Invalid direction: {val}")
-    
-    def up(self) -> None:
-        """Sets the direction of the snake body to up."""
-        self.direction = 'u'
-
-    def down(self) -> None:
-        """Sets the direction of the snake body to down."""
-        self.direction = 'd'
-
-    def left(self) -> None:
-        """Sets the direction of the snake body to left."""
-        self.direction = 'l'
-
-    def right(self) -> None:
-        """Sets the direction of the snake body to right."""
-        self.direction = 'r'
     
     def add_piece(self) -> None:
         """Adds a new SnakePiece to the body right behind the tail of the snake, making it the new tail."""
