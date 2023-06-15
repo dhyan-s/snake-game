@@ -133,6 +133,10 @@ class Snake:
         
     def render(self) -> None:
         """Draws the snake onto the screen."""
-        self.head.render()
+        self.head.move()
         self.body.render()
+        
+        self.head.stop()
+        self.head.render()
+        self.head.start()
         
