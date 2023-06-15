@@ -19,7 +19,7 @@ class Game:
         self.load_scoreboard()
         
     def load_game_objects(self) -> None:
-        self.snake = Snake(self.display, 15, 15, outline_width=2)
+        self.snake = Snake(self.display, 60, 60, outline_width=2)
         self.fruit = Fruit(self.display, 20, 20)
         self.boundary = Boundary(self.display)
         self.gameover_handler = GameOver(
@@ -32,7 +32,6 @@ class Game:
             restart_callback = self.restart_game,
         )
         self.change_fruit_pos()
-        self.snake.start()
         
     def load_fonts(self) -> None:
         font_path = "assets/fonts"
@@ -74,13 +73,18 @@ class Game:
     def handle_event(self, event: pygame.event.Event):
         if event.type != pygame.KEYDOWN:
             return
+        start = lambda: None if self.gameover_handler.game_over else self.snake.start()
         if event.key == pygame.K_UP and (self.snake.direction != 'd' or len(self.snake.body) == 0):
+            start()
             self.snake.up()
         elif event.key == pygame.K_DOWN and (self.snake.direction != 'u' or len(self.snake.body) == 0):
+            start()
             self.snake.down()
         elif event.key == pygame.K_LEFT and (self.snake.direction != 'r' or len(self.snake.body) == 0):
+            start()
             self.snake.left()
         elif event.key == pygame.K_RIGHT and (self.snake.direction != 'l' or len(self.snake.body) == 0):
+            start()
             self.snake.right()
         elif event.key in [pygame.K_SPACE, pygame.K_RETURN]:
             self.gameover_handler.reset()
