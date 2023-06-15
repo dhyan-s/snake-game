@@ -96,6 +96,9 @@ class Snake:
             extend_by=extend_by
         )
         
+    def colliding_with(self, other_rect: pygame.Rect) -> bool: 
+        return self.head.colliding_with(other_rect) or self.body.colliding_with(other_rect)
+        
     def start(self) -> None:
         self.head.start()
         self.body.start()
