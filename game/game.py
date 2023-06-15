@@ -42,6 +42,16 @@ class Game:
             y_range=(self.boundary.top_line.bottom, self.boundary.stats_separator.top)
         )
         
+    def check_game_over(self) -> None:
+        if self.snake.body.colliding_with(self.snake.head.rect):
+            self.snake.stop()
+        elif any(self.snake.colliding_with(rect) for rect in [self.boundary.top_line, 
+                                                              self.boundary.bottom_line, 
+                                                              self.boundary.left_line, 
+                                                              self.boundary.right_line, 
+                                                              self.boundary.stats_separator]):
+            self.snake.stop()
+        
     def handle_event(self, event: pygame.event.Event):
         if event.type != pygame.KEYDOWN:
             return
@@ -55,6 +65,7 @@ class Game:
             self.snake.right()
     
     def render(self) -> None:
+        self.check_game_over()
         self.point()
         self.snake.render()
         self.fruit.render()
