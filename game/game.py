@@ -74,13 +74,13 @@ class Game:
     def handle_event(self, event: pygame.event.Event):
         if event.type != pygame.KEYDOWN:
             return
-        if event.key == pygame.K_UP:
+        if event.key == pygame.K_UP and (self.snake.direction != 'd' or len(self.snake.body) == 0):
             self.snake.up()
-        elif event.key == pygame.K_DOWN:
+        elif event.key == pygame.K_DOWN and (self.snake.direction != 'u' or len(self.snake.body) == 0):
             self.snake.down()
-        elif event.key == pygame.K_LEFT:
+        elif event.key == pygame.K_LEFT and (self.snake.direction != 'r' or len(self.snake.body) == 0):
             self.snake.left()
-        elif event.key == pygame.K_RIGHT:
+        elif event.key == pygame.K_RIGHT and (self.snake.direction != 'l' or len(self.snake.body) == 0):
             self.snake.right()
         elif event.key in [pygame.K_SPACE, pygame.K_RETURN]:
             self.gameover_handler.reset()

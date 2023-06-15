@@ -95,6 +95,14 @@ class Snake:
             extend_by=extend_by
         )
         
+    @property
+    def direction(self) -> str:
+        return self.head.direction
+    
+    @direction.setter
+    def direction(self, val: str) -> None:
+        self.head.direction = val
+        
     def colliding_with(self, other_rect: pygame.Rect) -> bool: 
         return self.head.colliding_with(other_rect) or self.body.colliding_with(other_rect)
         

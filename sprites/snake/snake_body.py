@@ -83,6 +83,12 @@ class SnakeBody:
     def extend(self) -> None:
         """Increases the number of pieces the body has."""
         self.no_pieces += 3
+        
+    def __len__(self) -> int:
+        return self.length()
+    
+    def length(self) -> int:
+        return len(self.pieces)
 
     def move(self) -> None:
         """Handles movement of the snake body."""
