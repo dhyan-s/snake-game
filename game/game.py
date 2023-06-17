@@ -120,5 +120,5 @@ class Game:
         )
         self.boundary.render()
         self.render_title()
-        self.gameover_handler.render_gameover_text()
+        self.gameover_handler.render_gameover_text() # Redraw the text just in case anything is overlapping it
         
