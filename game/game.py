@@ -73,7 +73,13 @@ class Game:
     def handle_event(self, event: pygame.event.Event):
         if event.type != pygame.KEYDOWN:
             return
+        
+        # To start the game when an arrow key is pressed for the first time after opening it
+        # Snake().start() doesn't do anything if it is already started, 
+        # so it's safe to use this statement whenever an arrow key is pressed and the 
+        # game_over flag is set to False.
         start = lambda: None if self.gameover_handler.game_over else self.snake.start()
+        
         if event.key == pygame.K_UP and (self.snake.direction != 'd' or len(self.snake.body) == 0):
             start()
             self.snake.up()
