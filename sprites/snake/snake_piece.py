@@ -34,8 +34,8 @@ class SnakePiece:
         self.outline_width = outline_width
         self.color = color
         self.outline_color = outline_color
-        self._orient = "v"
-        self._swapped_dimensions = True
+        self.__orient = "v"
+        self.__swapped_dimensions = True
         self.rect = pygame.Rect(x, y, width, height)
         self.direction = initial_direction
         
@@ -45,7 +45,7 @@ class SnakePiece:
     @property
     def direction(self) -> str:
         """Gets the direction of the piece."""
-        return self._direction
+        return self.__direction
 
     @direction.setter
     def direction(self, val: str) -> None:
@@ -57,7 +57,7 @@ class SnakePiece:
         """
         if val not in {"r", "l", "u", "d"}:
             raise ValueError(f"Invalid direction: {val}")
-        self._direction = val
+        self.__direction = val
         self.orient = "h" if val in {"r", "l"} else "v"
 
     def behind(self, other_piece_width: int, other_piece_height: int) -> Tuple[Union[int, float], Union[int, float]]:
@@ -84,7 +84,7 @@ class SnakePiece:
     @property
     def orient(self) -> str:
         """Gets the orientation of the piece."""
-        return self._orient
+        return self.__orient
 
     @orient.setter
     def orient(self, val: str) -> None:
@@ -99,16 +99,16 @@ class SnakePiece:
         """
         if val not in ["vertical", "horizontal", "v", "h"]:
             raise ValueError("Invalid orient. Must be 'v', 'h', 'vertical' or 'horizontal'")
-        self._orient = val.replace("vertical", "v").replace("horizontal", "h")
+        self.__orient = val.replace("vertical", "v").replace("horizontal", "h")
 
-        if self._orient == "v":
-            if self._swapped_dimensions:
+        if self.__orient == "v":
+            if self.__swapped_dimensions:
                 self.rect.width, self.rect.height = self.rect.height, self.rect.width
-                self._swapped_dimensions = False
+                self.__swapped_dimensions = False
 
-        elif not self._swapped_dimensions:
+        elif not self.__swapped_dimensions:
             self.rect.width, self.rect.height = self.rect.height, self.rect.width
-            self._swapped_dimensions = True
+            self.__swapped_dimensions = True
 
     def render(self) -> None:
         """Draws the piece on the screen."""

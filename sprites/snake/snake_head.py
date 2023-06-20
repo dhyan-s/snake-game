@@ -64,16 +64,16 @@ class SnakeHead(SnakePiece):
             outline_width=outline_width,
             initial_direction=initial_direction
         )
-        self._moving = False
+        self.__moving = False
         self.__initial_direction = initial_direction
         self.__start_x = x
         self.__start_y = y
         
     def start(self) -> None:
-        self._moving = True
+        self.__moving = True
         
     def stop(self) -> None:
-        self._moving = False
+        self.__moving = False
         
     def reset(self) -> None:
         self.direction = self.__initial_direction
@@ -81,26 +81,26 @@ class SnakeHead(SnakePiece):
         
     @property
     def moving(self) -> bool:
-        return self._moving
+        return self.__moving
 
     def up(self) -> None:
         """Change the direction of the head to up."""
-        if not self._moving: return
+        if not self.__moving: return
         self.direction = 'u'
 
     def down(self) -> None:
         """Change the direction of the head to down."""
-        if not self._moving: return
+        if not self.__moving: return
         self.direction = 'd'
 
     def left(self) -> None:
         """Change the direction of the head to left."""
-        if not self._moving: return
+        if not self.__moving: return
         self.direction = 'l'
 
     def right(self) -> None:
         """Change the direction of the head to right."""
-        if not self._moving: return
+        if not self.__moving: return
         self.direction = 'r'
 
     def _get_eye_coordinates(self, rect: pygame.Rect, direction: str) -> Tuple[Union[int, float], Union[int, float], Union[int, float], Union[int, float]]:
@@ -150,8 +150,8 @@ class SnakeHead(SnakePiece):
 
     def move(self) -> None:
         """Move the head according to the current direction."""
-        if not self._moving: return
-        x_vel, y_vel = self._get_velocity(self._direction)
+        if not self.__moving: return
+        x_vel, y_vel = self._get_velocity(self.direction)
         self.rect.x += x_vel
         self.rect.y += y_vel
 

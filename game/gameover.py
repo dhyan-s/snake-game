@@ -16,8 +16,8 @@ class GameOver:
                  restart_callback: Callable = None
                  ):
         self.display = display
-        self.snake = snake
-        self.boundary = boundary
+        self.__snake = snake
+        self.__boundary = boundary
         
         self.gameover_font = gameover_font
         self.message_font = message_font
@@ -37,13 +37,13 @@ class GameOver:
             self.restart_callback()
     
     def check_game_over(self) -> Tuple[bool, str]:
-        if self.snake.body.colliding_with(self.snake.head.rect):
+        if self.__snake.body.colliding_with(self.__snake.head.rect):
             return (True, "SNAKE BUMPED INTO ITSELF")
-        elif any(self.snake.colliding_with(rect) for rect in [self.boundary.top_line, 
-                                                              self.boundary.bottom_line, 
-                                                              self.boundary.left_line, 
-                                                              self.boundary.right_line, 
-                                                              self.boundary.stats_separator]):
+        elif any(self.__snake.colliding_with(rect) for rect in [self.__boundary.top_line, 
+                                                              self.__boundary.bottom_line, 
+                                                              self.__boundary.left_line, 
+                                                              self.__boundary.right_line, 
+                                                              self.__boundary.stats_separator]):
             return (True, "SNAKE MOVED OUT OF THE BOUNDARY")
         return (False, "")
     
@@ -61,11 +61,11 @@ class GameOver:
         restart_text = self.message_font.render("PRESS ENTER OR SPACEBAR TO CONTINUE" , False , "white")  
         
         y_spacing = 20
-        x_range = (self.boundary.left_line.right, self.boundary.right_line.left)
+        x_range = (self.__boundary.left_line.right, self.__boundary.right_line.left)
         
         game_over_rect = game_over_text.get_rect(midbottom=center_of_rect(
             x_range,
-            (self.boundary.top_line.bottom, self.boundary.stats_separator.top)
+            (self.__boundary.top_line.bottom, self.__boundary.stats_separator.top)
         ))
         
         reason_rect = reason_text.get_rect(midtop=(
