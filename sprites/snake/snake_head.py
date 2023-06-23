@@ -70,17 +70,24 @@ class SnakeHead(SnakePiece):
         self.__start_y = y
         
     def start(self) -> None:
+        """Start the movement of the snake head."""
         self.__moving = True
         
     def stop(self) -> None:
+        """Stop the movement of the snake head."""
         self.__moving = False
         
     def reset(self) -> None:
+        """
+        Reset the direction and coordinates of the snake head to the
+        initial values specified during initialization.
+        """
         self.direction = self.__initial_direction
         self.rect.topleft = (self.__start_x, self.__start_y)
         
     @property
     def moving(self) -> bool:
+        """Get the current movement status of the snake head."""
         return self.__moving
 
     def up(self) -> None:
