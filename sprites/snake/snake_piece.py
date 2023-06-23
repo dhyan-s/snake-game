@@ -45,13 +45,13 @@ class SnakePiece:
 
     @property
     def direction(self) -> str:
-        """Gets the direction of the piece."""
+        """Get the direction of the piece."""
         return self.__direction
 
     @direction.setter
     def direction(self, val: str) -> None:
         """
-        Sets the direction of the piece.
+        Set the direction of the piece.
 
         Raises:
             ValueError: If the direction value is invalid.
@@ -63,7 +63,7 @@ class SnakePiece:
 
     def behind(self, other_piece_width: int, other_piece_height: int) -> Tuple[Union[int, float], Union[int, float]]:
         """
-        Calculates the position to place another piece behind this piece.
+        Calculate the position to place another piece behind this piece.
 
         Parameters:
             other_piece_width (int): The width of the other piece.
@@ -84,13 +84,13 @@ class SnakePiece:
 
     @property
     def orient(self) -> str:
-        """Gets the orientation of the piece."""
+        """Get the orientation of the piece."""
         return self.__orient
 
     @orient.setter
     def orient(self, val: str) -> None:
         """
-        Sets the orientation of the piece.
+        Set the orientation of the piece.
 
         The orient adjustment is done by swapping the width and height
         and updating its respective flag.
@@ -112,6 +112,6 @@ class SnakePiece:
             self.__swapped_dimensions = True
 
     def render(self) -> None:
-        """Draws the piece on the screen."""
+        """Draw the piece on the screen."""
         pygame.draw.rect(self.display, pygame.Color(self.color), self.rect)
         pygame.draw.rect(self.display, pygame.Color(self.outline_color), self.rect, width=self.outline_width)
