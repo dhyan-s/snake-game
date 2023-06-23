@@ -40,6 +40,7 @@ class SnakePiece:
         self.direction = initial_direction
         
     def colliding_with(self, other_rect: pygame.Rect) -> bool:
+        """Check if the piece is colliding with another Rect object."""
         return self.rect.colliderect(other_rect)
 
     @property
