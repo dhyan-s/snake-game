@@ -48,24 +48,29 @@ class SnakeBody:
         self.__moving = False
         
     def start(self) -> None:
+        """Start the movement of the snake body."""
         self.__moving = True
         
     def stop(self) -> None:
+        """Stop the movement of the snake body."""
         self.__moving = False
         
     def reset(self) -> None:
+        """Delete all the pieces of the snake body."""
         self.pieces.clear()
         self.no_pieces = 0
         
     @property
     def moving(self) -> bool:
+        """Get the current movement status of the snake head."""
         return self.__moving
         
     def colliding_with(self, other_rect: pygame.Rect) -> bool:
+        """Check if the body is colliding with another Rect object."""
         return any(piece.colliding_with(other_rect) for piece in self.pieces)
     
     def add_piece(self) -> None:
-        """Adds a new SnakePiece to the body right behind the tail of the snake, making it the new tail."""
+        """Add a new SnakePiece to the body right behind the tail of the snake, making it the new tail."""
         previous_piece = self.pieces[-1] if self.pieces else self.head
         new_piece = SnakePiece(display=self.display, 
                                x=0, 
@@ -81,14 +86,14 @@ class SnakeBody:
         return new_piece
         
     def extend(self) -> None:
-        """Increases the number of pieces the body has."""
+        """Increase the number of pieces the body has."""
         self.no_pieces += 3
         
     def __len__(self) -> int:
+        """Get the number of pieces in the body."""
         return self.length()
     
-    def length(self) -> int:
-        return len(self.pieces)
+    length = __len__
 
     def move(self) -> None:
         """Handles movement of the snake body."""
@@ -104,7 +109,7 @@ class SnakeBody:
         self.pieces[0].rect.y = y
         
     def render(self) -> None:
-        """Draws the snake body on the screen."""
+        """Draw the snake body on the screen."""
         if len(self.pieces) < self.no_pieces: # Change 'if' to 'while' to add all pieces in one frame.
             self.add_piece()
         self.move()
