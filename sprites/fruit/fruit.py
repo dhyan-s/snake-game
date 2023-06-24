@@ -30,13 +30,13 @@ class Fruit:
         self.update_rect()
         
     def set_pos_to(self, coords: Tuple) -> None:
-        """Sets the position of the fruit to the specified coordinates."""
+        """Set the position of the fruit to the specified coordinates."""
         self.x, self.y = coords
         
     def set_random_pos(self, 
                        x_range: Union[Tuple[int, int], List[int]] = None,
                        y_range: Union[Tuple[int, int], List[int]] = None) -> None:
-        """Sets the position of the fruit to a random location within the specified range."""
+        """Set the position of the fruit to a random location within the specified range."""
         if x_range is None: x_range = (0, self.display.get_width())
         if y_range is None: y_range = (0, self.display.get_height())
         x_range, y_range = map(list, (x_range, y_range))
@@ -48,11 +48,11 @@ class Fruit:
         self.update_rect()
         
     def update_rect(self) -> None:
-        """Updates the rect of the fruit based on the instance attributes."""
+        """Update the rect of the fruit based on the instance attributes."""
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         
     def render(self) -> None:
-        """Draws the fruit on the display surface."""
+        """Draw the fruit on the display surface."""
         self.update_rect()
         apple = pygame.draw.ellipse(self.display, self.color, self.rect)
         apple_outline = pygame.draw.ellipse(self.display, self.outline_color, self.rect, width=self.outline_width)
