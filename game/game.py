@@ -105,7 +105,7 @@ class Game:
         self.change_fruit_pos()
         self.snake.start()
         
-    def handle_event(self, event: pygame.event.Event):
+    def handle_event(self, event: pygame.event.Event) -> None:
         """
         Handle the keyboard events for controlling the snake and restarting the game.
 

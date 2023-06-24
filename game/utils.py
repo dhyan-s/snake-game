@@ -1,6 +1,6 @@
 from typing import Tuple, List
 
-def center_of(coords: Tuple[int, int]):
+def center_of(coords: Tuple[int, int]) -> float:
     """
     Calculate the center point of the given coordinates.
     

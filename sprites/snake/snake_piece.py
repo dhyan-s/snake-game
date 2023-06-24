@@ -63,7 +63,10 @@ class SnakePiece:
         self.__direction = val
         self.orient = "h" if val in {"r", "l"} else "v"
 
-    def behind(self, other_piece_width: int, other_piece_height: int) -> Tuple[Union[int, float], Union[int, float]]:
+    def behind(self, 
+               other_piece_width: int, 
+               other_piece_height: int
+               ) -> Tuple[Union[int, float], Union[int, float]]:
         """
         Calculate the position to place another piece behind this piece.
 

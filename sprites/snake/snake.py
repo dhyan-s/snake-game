@@ -43,7 +43,8 @@ class Snake:
                  eye_front_distance: int = 6,
                  eye_side_distance: int = 5,
                  initial_direction: str = "r",
-                 extend_by: int = 3) -> None:
+                 extend_by: int = 3
+                 ) -> None:
         """
         Parameters:
             - display (pygame.Surface): The display surface to render the snake on.

@@ -51,24 +51,24 @@ class Score:
         self._score = val
         self.update_highscore()
         
-    def update_highscore(self):
+    def update_highscore(self) -> None:
         if self.score > self.highscore:
             self.highscore = self.score
             
-    def increment_score(self):
+    def increment_score(self) -> None:
         """Increment the score by 1."""
         self.score += 1
         
-    def reset_score(self):
+    def reset_score(self) -> None:
         """Reset the score to 0."""
         self.score = 0
         
     def get_rects(self, 
-                       icon: pygame.Surface,
-                       font: pygame.Surface,
-                       spacing: int,
-                       coords: Tuple[int, int],
-                       ) -> Tuple[pygame.Rect, pygame.Rect]:
+                  icon: pygame.Surface,
+                  font: pygame.Surface,
+                  spacing: int,
+                  coords: Tuple[int, int],
+                  ) -> Tuple[pygame.Rect, pygame.Rect]:
         """
         Calculates the positions and generates pygame.Rect objects
         for the icon and the font, based on the provided icon surface,
@@ -90,7 +90,7 @@ class Score:
     def render_score(self, 
                      coords: Tuple[int, int],
                      text: str = "$", 
-                    ) -> None:
+                     ) -> None:
         """
         Render the score on the display surface.
 
@@ -110,9 +110,9 @@ class Score:
         self.display.blit(score_font, font_rect)
         
     def render_highscore(self, 
-                     coords: Tuple[int, int],
-                     text: str = "$", 
-                    ) -> None:
+                         coords: Tuple[int, int],
+                         text: str = "$", 
+                         ) -> None:
         """
         Render the high score on the display surface.
 
@@ -132,11 +132,11 @@ class Score:
         self.display.blit(highscore_font, font_rect)
         
     def render(self, 
-                score_coords: Tuple[int, int], 
-                highscore_coords: Tuple[int, int],
-                score_text: str = "$",
-                highscore_text: str = "$"
-            ) -> None:
+               score_coords: Tuple[int, int], 
+               highscore_coords: Tuple[int, int],
+               score_text: str = "$",
+               highscore_text: str = "$"
+               ) -> None:
         """
         Render the score and highscore on the display surface.
 

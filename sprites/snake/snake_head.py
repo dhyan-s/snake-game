@@ -110,7 +110,12 @@ class SnakeHead(SnakePiece):
         if not self.__moving: return
         self.direction = 'r'
 
-    def _get_eye_coordinates(self, rect: pygame.Rect, direction: str) -> Tuple[Union[int, float], Union[int, float], Union[int, float], Union[int, float]]:
+    def _get_eye_coordinates(self, 
+                             rect: pygame.Rect, direction: str
+                             ) -> Tuple[Union[int, float], 
+                                        Union[int, float], 
+                                        Union[int, float], 
+                                        Union[int, float]]:
         """
         Calculate the coordinates of the eyes based on the head's rectangle and direction.
 

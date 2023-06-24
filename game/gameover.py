@@ -18,7 +18,7 @@ class GameOver:
                  message_font: pygame.font.Font,
                  gameover_callback: Callable = None,
                  restart_callback: Callable = None
-                 ):
+                 ) -> None:
         """
         Parameters:
             display (pygame.Surface): The display surface to render the game over text on.

@@ -37,7 +37,8 @@ class Fruit:
         
     def set_random_pos(self, 
                        x_range: Union[Tuple[int, int], List[int]] = None,
-                       y_range: Union[Tuple[int, int], List[int]] = None) -> None:
+                       y_range: Union[Tuple[int, int], List[int]] = None
+                       ) -> None:
         """Set the position of the fruit to a random location within the specified range."""
         if x_range is None: x_range = (0, self.display.get_width())
         if y_range is None: y_range = (0, self.display.get_height())

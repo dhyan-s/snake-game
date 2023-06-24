@@ -17,7 +17,8 @@ class SnakeBody:
                  color: str = "green",
                  outline_color: str = "white",
                  outline_width: str = 3,
-                 extend_by: int = 3) -> None:
+                 extend_by: int = 3
+                 ) -> None:
         """
         Parameters:
             - display (pygame.Surface): The display surface to render the body on.
