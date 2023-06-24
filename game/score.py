@@ -118,7 +118,7 @@ class Score:
 
         Parameters:
             coords (Tuple[int, int]): The coordinates for rendering the high score (anchor: center).
-            text (str): The text template for the score. '$' is replaced with self.highscore. (default: "$")
+            text (str): The text template for the highscore. '$' is replaced with self.highscore. (default: "$")
         """
         text = text.replace("$", str(self.highscore))
         highscore_font = self.font.render(text, True, "white")
@@ -133,7 +133,9 @@ class Score:
         
     def render(self, 
                 score_coords: Tuple[int, int], 
-                highscore_coords: Tuple[int, int]
+                highscore_coords: Tuple[int, int],
+                score_text: str = "$",
+                highscore_text: str = "$"
             ) -> None:
         """
         Render the score and highscore on the display surface.
@@ -141,7 +143,9 @@ class Score:
         Parameters:
             score_coords (Tuple[int, int]): The coordinates for rendering the score.
             highscore_coords (Tuple[int, int]): The coordinates for rendering the highscore.
+            score_text (str): The text template for the score. '$' is replaced with self.score. (default: "$")
+            highscore_text (str): The text template for the highscore. '$' is replaced with self.highscore. (default: "$")
         """
-        self.render_score(score_coords)
-        self.render_highscore(highscore_coords)
+        self.render_score(score_coords, score_text)
+        self.render_highscore(highscore_coords, highscore_text)
         
