@@ -11,6 +11,12 @@ from .utils import center_of_rect
 
 
 class Game:
+    """
+    - This class puts together all the necessary components to create a fully working snake game.
+    - It manages the game's logic and rendering, such as handling events, updating the score, and rendering game objects on the display surface.
+    - The game loop, however, must be handled somewhere else.
+    """
+    
     def __init__(self, display: pygame.Surface) -> None:
         """
         Parameters:
