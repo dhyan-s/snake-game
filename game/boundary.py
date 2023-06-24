@@ -3,6 +3,10 @@ import pygame
 class Boundary:
     """
     Represents the boundary lines in the game display.
+
+    This class is responsible for rendering the boundary lines on a display surface.
+    It defines the visual appearance and positioning of the boundary lines, including the top,
+    bottom, left, right lines, as well as the separators for displaying game statistics.
     """
     def __init__(self, 
                  display: pygame.Surface,
@@ -25,7 +29,7 @@ class Boundary:
         self.update_rects()
         
     def update_rects(self) -> None:
-        """Update the boundary Rects based on the display size."""
+        """Update the boundary and stat Rects based on the display size."""
         display_width = self.display.get_width()
         display_height = self.display.get_height()
         
