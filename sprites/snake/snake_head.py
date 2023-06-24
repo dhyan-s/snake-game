@@ -64,10 +64,10 @@ class SnakeHead(SnakePiece):
             outline_width=outline_width,
             initial_direction=initial_direction
         )
-        self.__moving = False
-        self.__initial_direction = initial_direction
-        self.__start_x = x
-        self.__start_y = y
+        self.__moving: bool = False
+        self.__initial_direction: str = initial_direction
+        self.__start_x: int = x
+        self.__start_y: int = y
         
     def start(self) -> None:
         """Start the movement of the snake head."""

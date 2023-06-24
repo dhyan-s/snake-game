@@ -24,6 +24,16 @@ class Game:
         """
         
         self.display = display
+        
+        # Types
+        self.snake: Snake
+        self.fruit: Fruit
+        self.boundary: Boundary
+        self.gameover_handler: GameOver
+        self.game_font: pygame.font.Font
+        self.gameover_font: pygame.font.Font
+        self.message_font: pygame.font.Font
+        self.scoreboard: Score
 
         self.load_fonts()
         self.load_game_objects()

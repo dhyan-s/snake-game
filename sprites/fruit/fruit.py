@@ -27,6 +27,8 @@ class Fruit:
         self.color = color
         self.outline_color = outline_color
         
+        self.rect: pygame.Rect
+        
         self.update_rect()
         
     def set_pos_to(self, coords: Tuple) -> None:

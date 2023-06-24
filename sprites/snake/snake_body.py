@@ -43,9 +43,9 @@ class SnakeBody:
         self.extend_by = extend_by
         
         self.pieces: List[SnakePiece] = []
-        self.no_pieces = 0
+        self.no_pieces: int = 0
         
-        self.__moving = False
+        self.__moving: bool = False
         
     def start(self) -> None:
         """Start the movement of the snake body."""
@@ -71,7 +71,7 @@ class SnakeBody:
     
     def add_piece(self) -> None:
         """Add a new SnakePiece to the body right behind the tail of the snake, making it the new tail."""
-        previous_piece = self.pieces[-1] if self.pieces else self.head
+        previous_piece: SnakePiece = self.pieces[-1] if self.pieces else self.head
         new_piece = SnakePiece(display=self.display, 
                                x=0, 
                                y=0, 

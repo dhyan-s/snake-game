@@ -39,7 +39,8 @@ class GameOver:
         self.gameover_callback = gameover_callback
         self.restart_callback = restart_callback
         
-        self.game_over = False
+        self.game_over: bool = False
+        self.reason: str
         self.reset()
         
     def reset(self) -> None:

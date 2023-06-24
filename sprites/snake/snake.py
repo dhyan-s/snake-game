@@ -67,7 +67,7 @@ class Snake:
         
         self.display = display
                 
-        self.head = SnakeHead(
+        self.head: SnakeHead = SnakeHead(
             display=display,
             x=x,
             y=y,
@@ -84,7 +84,7 @@ class Snake:
             eye_side_distance=eye_side_distance,
             initial_direction=initial_direction
         )
-        self.body = SnakeBody(
+        self.body: SnakeBody = SnakeBody(
             display=display,
             snake_head=self.head,
             piece_width=piece_width,

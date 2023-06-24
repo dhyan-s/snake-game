@@ -26,6 +26,16 @@ class Boundary:
         self.color = color
         self.thickness = thickness
         self.stats_sep_y_offset = stats_sep_y_offset
+        
+        # Types
+        self.top_line: pygame.Rect
+        self.left_line: pygame.Rect
+        self.right_line: pygame.Rect
+        self.bottom_line: pygame.Rect
+        self.stats_separator: pygame.Rect
+        self.score_separator: pygame.Rect
+        self.highscore_separator: pygame.Rect
+        
         self.update_rects()
         
     def update_rects(self) -> None:

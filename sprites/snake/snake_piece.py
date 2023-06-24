@@ -34,9 +34,11 @@ class SnakePiece:
         self.outline_width = outline_width
         self.color = color
         self.outline_color = outline_color
-        self.__orient = "v"
-        self.__swapped_dimensions = True
-        self.rect = pygame.Rect(x, y, width, height)
+        
+        self.__orient: str = "v"
+        self.__swapped_dimensions: bool = True
+        self.rect: pygame.Rect = pygame.Rect(x, y, width, height)
+        
         self.direction = initial_direction
         
     def colliding_with(self, other_rect: pygame.Rect) -> bool:

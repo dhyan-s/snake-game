@@ -28,7 +28,7 @@ class Score:
         self.display = display
         self.spacing = spacing
         
-        self.icon_size = icon_size
+        self.icon_size: Tuple[int, int] = icon_size
         if self.icon_size is None:
             self.icon_size = (32, 32)
             
@@ -39,8 +39,8 @@ class Score:
         self.highscore_icon = pygame.transform.scale(self.highscore_icon, self.icon_size)
         
         self.font = font
-        self._score = 0
-        self.highscore = 0
+        self._score: int = 0
+        self.highscore: int = 0
         
     @property
     def score(self) -> int:
