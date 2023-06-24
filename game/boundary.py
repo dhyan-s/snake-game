@@ -1,12 +1,22 @@
 import pygame
 
 class Boundary:
+    """
+    Represents the boundary lines in the game display.
+    """
     def __init__(self, 
                  display: pygame.Surface,
                  color: str = "red",
                  thickness: int = 8,
                  stats_sep_y_offset = 65,
                  ) -> None:
+        """
+        Parameters:
+            - display (pygame.Surface): The display surface to render the boundary on.
+            - color (str): The color of the boundary lines. (default: "red")
+            - thickness (int): The thickness of the boundary lines. (default: 8)
+            - stats_sep_y_offset (int): The y-offset for the stats separator line. (default: 65)
+        """
         self.display = display
         
         self.color = color
@@ -15,6 +25,7 @@ class Boundary:
         self.update_rects()
         
     def update_rects(self) -> None:
+        """Update the boundary Rects based on the display size."""
         display_width = self.display.get_width()
         display_height = self.display.get_height()
         
@@ -33,6 +44,7 @@ class Boundary:
         self.highscore_separator = pygame.Rect(highscore_separator_x, stats_sep_y, self.thickness, self.stats_sep_y_offset)
         
     def render(self) -> None:
+        """Render the boundary lines on the display surface."""
         pygame.draw.rect(self.display, self.color, self.top_line)
         pygame.draw.rect(self.display, self.color, self.bottom_line)
         pygame.draw.rect(self.display, self.color, self.left_line)
