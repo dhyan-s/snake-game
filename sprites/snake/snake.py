@@ -97,24 +97,34 @@ class Snake:
         
     @property
     def direction(self) -> str:
+        """Get the direction of the snake."""
         return self.head.direction
     
     @direction.setter
     def direction(self, val: str) -> None:
+        """Set the direction of the snake."""
         self.head.direction = val
         
     def colliding_with(self, other_rect: pygame.Rect) -> bool: 
+        """Check if the snake is colliding with another Rect object."""
         return self.head.colliding_with(other_rect) or self.body.colliding_with(other_rect)
         
     def start(self) -> None:
+        """Start the movement of the snake."""
         self.head.start()
         self.body.start()
         
     def stop(self) -> None:
+        """Stop the movement of the snake."""
         self.head.stop()
         self.body.stop()
         
     def reset(self) -> None:
+        """
+        Reset the direction and coordinates of the snake head to the
+        initial values specified during initialization and delete all
+        the pieces of the body.
+        """
         self.body.reset()
         self.head.reset()
         
