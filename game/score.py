@@ -1,5 +1,5 @@
 import pygame
-from typing import Tuple, List
+from typing import Callable, Tuple, List
 
 
 class Score:
@@ -38,6 +38,8 @@ class Score:
         self.highscore_icon = pygame.image.load(highscore_icon_path).convert_alpha()
         self.highscore_icon = pygame.transform.scale(self.highscore_icon, self.icon_size)
         
+        self.on_new_highscore: Callable = None
+        
         self.font = font
         self._score: int = 0
         self.highscore: int = 0
@@ -54,6 +56,8 @@ class Score:
     def update_highscore(self) -> None:
         if self.score > self.highscore:
             self.highscore = self.score
+            if self.on_new_highscore is not None:
+                self.on_new_highscore(self.highscore)
             
     def increment_score(self) -> None:
         """Increment the score by 1."""

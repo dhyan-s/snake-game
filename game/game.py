@@ -1,6 +1,7 @@
 import pygame
 import os
-from typing import Tuple, Union
+from typing import Tuple, Union, Dict
+import pickle
 
 from sprites.snake import Snake
 from sprites.fruit import Fruit
@@ -34,10 +35,15 @@ class Game:
         self.gameover_font: pygame.font.Font
         self.message_font: pygame.font.Font
         self.scoreboard: Score
+        
+        self.game_data: Dict = {
+            'high_score': 0
+        }
 
         self._load_fonts()
         self._load_game_objects()
         self._load_scoreboard()
+        self.load_game_data()
         
     def _load_game_objects(self) -> None:
         """Initialize the necessary game objects."""
@@ -78,6 +84,45 @@ class Game:
             highscore_icon_path = f"{cur_dir}/trophy.png",
             font = self.game_font
             )
+        self.scoreboard.on_new_highscore = self.new_highscore
+        
+    def new_highscore(self, high_score: int) -> None:
+        """
+        The function that gets called when a new high score is achieved. 
+        
+        Updates the high score in the game data and saves it to a file.
+        """
+        self.game_data['high_score'] = high_score
+        self.save_game_data()
+            
+    def load_game_data(self) -> None:
+        """
+        - Loads the game data from a file and applies it to the game.
+        - If the game data file doesn't exist, it creates a new file with default game data.
+        - If the file exists but is empty or corrupted, it resets the game data to default values.
+        """
+        cur_dir = os.path.dirname(__file__)
+        file_path = f"{cur_dir}/game_data.dat"
+        if not os.path.exists(file_path): # File not found
+            self.save_game_data()
+        with open(file_path, "rb") as f:
+            try:
+                self.game_data = pickle.load(f)
+                self.apply_game_data()
+            except EOFError: # File exists but is likely empty
+                self.save_game_data()
+            except pickle.UnpicklingError: # Corrupted game data
+                self.save_game_data()
+        
+    def save_game_data(self) -> None:
+        """Saves the game data to a file."""
+        cur_dir = os.path.dirname(__file__)
+        with open(f"{cur_dir}/game_data.dat", "wb") as f:
+            pickle.dump(self.game_data, f)
+            
+    def apply_game_data(self) -> None:
+        """Applies the loaded game data to the respective objects in the game."""
+        self.scoreboard.highscore = self.game_data['high_score']
         
     def point(self) -> None:
         """
