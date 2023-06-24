@@ -3,6 +3,11 @@ from typing import Tuple, List
 
 
 class Score:
+    """
+    This class handles the management and rendering of the score and highscore in the game.
+    It provides methods to increment and reset the score, as well as rendering the score and
+    highscore on a display surface.
+    """
     def __init__(self,
                  display: pygame.Surface,
                  score_icon_path: pygame.Surface,
@@ -11,6 +16,15 @@ class Score:
                  spacing: int = 10,
                  icon_size: Tuple[int, int] = None,
                  ):
+        """
+        Parameters:
+            display (pygame.Surface): The display surface to render the score on.
+            score_icon_path (str): The file path to the score icon image.
+            highscore_icon_path (str): The file path to the highscore icon image.
+            font (pygame.font.Font): The font used for rendering the score and highscore.
+            spacing (int): The spacing between the icon and the score/highscore. (default: 10)
+            icon_size (Tuple[int, int]): The size of the score/highscore icons. (default: (32, 32))
+        """
         self.display = display
         self.spacing = spacing
         
@@ -42,9 +56,11 @@ class Score:
             self.highscore = self.score
             
     def increment_score(self):
+        """Increment the score by 1."""
         self.score += 1
         
     def reset_score(self):
+        """Reset the score to 0."""
         self.score = 0
         
     def get_rects(self, 
@@ -53,6 +69,11 @@ class Score:
                        spacing: int,
                        coords: Tuple[int, int],
                        ) -> Tuple[pygame.Rect, pygame.Rect]:
+        """
+        Calculates the positions and generates pygame.Rect objects
+        for the icon and the font, based on the provided icon surface,
+        font surface, spacing, and coordinates.
+        """
         icon_width, icon_height = icon.get_width(), icon.get_height()
         font_width, font_height = font.get_width(), font.get_height()
         total_width = icon_width + spacing + font_width
@@ -70,6 +91,13 @@ class Score:
                      coords: Tuple[int, int],
                      text: str = "$", 
                     ) -> None:
+        """
+        Render the score on the display surface.
+
+        Parameters:
+            coords (Tuple[int, int]): The coordinates for rendering the score (anchor: center).
+            text (str): The text template for the score. '$' is replaced with self.score. (default: "$")
+        """
         text = text.replace("$", str(self.score))
         score_font = self.font.render(text, True, "white")
         icon_rect, font_rect = self.get_rects(
@@ -85,6 +113,13 @@ class Score:
                      coords: Tuple[int, int],
                      text: str = "$", 
                     ) -> None:
+        """
+        Render the high score on the display surface.
+
+        Parameters:
+            coords (Tuple[int, int]): The coordinates for rendering the high score (anchor: center).
+            text (str): The text template for the score. '$' is replaced with self.highscore. (default: "$")
+        """
         text = text.replace("$", str(self.highscore))
         highscore_font = self.font.render(text, True, "white")
         icon_rect, font_rect = self.get_rects(
@@ -100,6 +135,13 @@ class Score:
                 score_coords: Tuple[int, int], 
                 highscore_coords: Tuple[int, int]
             ) -> None:
+        """
+        Render the score and highscore on the display surface.
+
+        Parameters:
+            score_coords (Tuple[int, int]): The coordinates for rendering the score.
+            highscore_coords (Tuple[int, int]): The coordinates for rendering the highscore.
+        """
         self.render_score(score_coords)
         self.render_highscore(highscore_coords)
         
