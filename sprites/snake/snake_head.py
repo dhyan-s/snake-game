@@ -142,7 +142,7 @@ class SnakeHead(SnakePiece):
 
         return eye1_x, eye1_y, eye2_x, eye2_y
 
-    def _get_velocity(self, direction: str) -> Tuple[int, int]:
+    def __get_velocity(self, direction: str) -> Tuple[int, int]:
         """
         Calculate the x and y velocity for the head based on the current direction.
 
@@ -163,7 +163,7 @@ class SnakeHead(SnakePiece):
     def move(self) -> None:
         """Move the head according to the current direction."""
         if not self.__moving: return
-        x_vel, y_vel = self._get_velocity(self.direction)
+        x_vel, y_vel = self.__get_velocity(self.direction)
         self.rect.x += x_vel
         self.rect.y += y_vel
 

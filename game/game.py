@@ -35,11 +35,11 @@ class Game:
         self.message_font: pygame.font.Font
         self.scoreboard: Score
 
-        self.load_fonts()
-        self.load_game_objects()
-        self.load_scoreboard()
+        self._load_fonts()
+        self._load_game_objects()
+        self._load_scoreboard()
         
-    def load_game_objects(self) -> None:
+    def _load_game_objects(self) -> None:
         """Initialize the necessary game objects."""
         self.snake = Snake(self.display, 60, 60, outline_width=2)
         self.fruit = Fruit(self.display, 20, 20)
@@ -55,7 +55,7 @@ class Game:
         )
         self.change_fruit_pos()
         
-    def load_fonts(self) -> None:
+    def _load_fonts(self) -> None:
         """Load the fonts used in the game."""
         font_path = "assets/fonts"
         
@@ -66,7 +66,7 @@ class Game:
         message_font_path = f"{font_path}/message_font.ttf"
         self.message_font = pygame.font.Font(message_font_path, 35)
         
-    def load_scoreboard(self) -> None:
+    def _load_scoreboard(self) -> None:
         """
         Initialize the Score class for tracking and rendering the
         score and highscore.

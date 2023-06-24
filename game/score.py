@@ -63,7 +63,7 @@ class Score:
         """Reset the score to 0."""
         self.score = 0
         
-    def get_rects(self, 
+    def __get_rects(self, 
                   icon: pygame.Surface,
                   font: pygame.Surface,
                   spacing: int,
@@ -100,7 +100,7 @@ class Score:
         """
         text = text.replace("$", str(self.score))
         score_font = self.font.render(text, True, "white")
-        icon_rect, font_rect = self.get_rects(
+        icon_rect, font_rect = self.__get_rects(
             icon=self.score_icon,
             font=score_font,
             spacing=self.spacing,
@@ -122,7 +122,7 @@ class Score:
         """
         text = text.replace("$", str(self.highscore))
         highscore_font = self.font.render(text, True, "white")
-        icon_rect, font_rect = self.get_rects(
+        icon_rect, font_rect = self.__get_rects(
             icon=self.highscore_icon,
             font=highscore_font,
             spacing=self.spacing,
