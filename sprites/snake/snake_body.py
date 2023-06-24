@@ -91,7 +91,7 @@ class SnakeBody:
         
     def __len__(self) -> int:
         """Get the number of pieces in the body."""
-        return self.length()
+        return len(self.pieces)
     
     length = __len__
 
