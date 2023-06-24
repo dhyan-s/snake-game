@@ -1,7 +1,10 @@
 import pygame
 import sys
+import ctypes
 
 from game import Game
+
+ctypes.windll.shcore.SetProcessDpiAwareness(1)
 
 pygame.init()
 
