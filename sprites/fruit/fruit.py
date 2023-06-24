@@ -48,6 +48,7 @@ class Fruit:
         self.update_rect()
         
     def update_rect(self) -> None:
+        """Updates the rect of the fruit based on the instance attributes."""
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         
     def render(self) -> None:
