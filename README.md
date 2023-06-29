@@ -1,4 +1,4 @@
- ![snake-min](https://github.com/dhyan-s/snake-game/assets/106443221/1a73714e-6d61-470d-a00e-a5cf87920e49)
+ ![snake-min](https://imgur.com/a/Yq216V2)
 
 **This is a redesigned version of the classic Snake game that I built a few years ago. It features improved code design, clear documentation, and type hints for better readability.**
 
