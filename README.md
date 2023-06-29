@@ -1,3 +1,5 @@
+ ![snake-min](https://github.com/dhyan-s/snake-game/assets/106443221/1a73714e-6d61-470d-a00e-a5cf87920e49)
+
 This is a redesigned version of the classic Snake game that I built about 2 years ago. It features improved code design, clear documentation, and type hints for better readability.
 
  
@@ -22,6 +24,5 @@ This is a redesigned version of the classic Snake game that I built about 2 year
 - **Game Over**: The game ends if the snake collides with the boundaries or its own body. Avoid these collisions to achieve a high score.
 
 - **Restarting the Game**: After a game over, press Enter or Spacebar to restart the game and challenge yourself to beat your previous score.
-
 
 #### Enjoy playing the Snake Game Redesign and have fun!
