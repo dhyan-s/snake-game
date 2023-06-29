@@ -1,6 +1,5 @@
 This is a redesigned version of the classic Snake game that I built about 2 years ago. It features improved code design, clear documentation, and type hints for better readability.
- 
-<br>
+
  
 ### Setup
 1. **Installation**: Clone the repository to your local machine using the command `git clone "url"`, assuming you have Git installed. If not, simply download the code from here and extract the zip file.
@@ -12,7 +11,6 @@ This is a redesigned version of the classic Snake game that I built about 2 year
 4. **Gameplay**: Refer to the [Game Instructions](#game-instructions) below if you need a guide.
 5. **Enjoy and Contribute**: Play the game, explore the codebase, and feel free to contribute to the project.
 
-<br>
 
 ### Game Instructions
 - **Objective**: The objective of the game is to control the snake, guiding it to eat fruits while avoiding collisions with the boundaries and its own body.
