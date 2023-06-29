@@ -1,4 +1,4 @@
- ![snake-min](https://imgur.com/a/Yq216V2)
+[![snake-min.gif](https://i.postimg.cc/1zq0ZCJt/snake-min.gif)](https://postimg.cc/PLdvW4Gs)
 
 **This is a redesigned version of the classic Snake game that I built a few years ago. It features improved code design, clear documentation, and type hints for better readability.**
 
