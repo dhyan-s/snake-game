@@ -24,4 +24,4 @@ _**A snake game featuring smoother movement and a more satisfying gameplay, buil
 
 - **Restarting the Game**: After a game over, press Enter or Spacebar to restart the game and challenge yourself to beat your previous score.
 
-#### Enjoy playing the Snake Game Redesign and have fun!
+#### Enjoy playing the snake game and have fun!
