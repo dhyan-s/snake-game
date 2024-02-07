@@ -1,6 +1,5 @@
+_**A snake game featuring smoother movement and a more satisfying gameplay, built with Python.**_
 [![snake-min.gif](https://i.postimg.cc/1zq0ZCJt/snake-min.gif)](https://postimg.cc/PLdvW4Gs)
-
-**This is a redesigned version of the classic Snake game that I built a few years ago. It features improved code design, clear documentation, and type hints for better readability.**
 
  
 ### Setup
