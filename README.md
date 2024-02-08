@@ -1,5 +1,7 @@
 _**A snake game featuring smoother movement and a more satisfying gameplay, built with Python.**_
-[![snake-min.gif](https://i.postimg.cc/1zq0ZCJt/snake-min.gif)](https://postimg.cc/PLdvW4Gs)
+
+![Screenshot 2024-02-08 131436](https://github.com/dhyan-s/snake-game/assets/106443221/f12f1f68-8c36-4caa-85e0-a55f9bd921a4)
+
 
  
 ### Setup
